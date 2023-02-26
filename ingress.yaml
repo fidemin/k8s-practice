@@ -8,7 +8,7 @@ spec:
   rules:
   - http:
       paths:
-      - path: /
+      - path: /hname
         pathType: Prefix
         backend:
           service:
