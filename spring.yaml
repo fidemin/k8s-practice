@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: spring
+  name: spring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: spring
+    spec:
+      containers:
+        # from docker image registry for host computer. (this file should run in host in which the access to registry server is possible) 
+        - image: 127.0.0.1:10005/spring-boot-practice:0.0.1 
+          name: spring-boot-practice
+          resources: {}
+status: {}
