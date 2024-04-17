@@ -9,14 +9,29 @@ spec:
   - name: mynginx
     image: nginx
     volumeMounts: 
-    - mountPath: /usr/local/etc
+    - mountPath: /usr/share/nginx/html
       name: myvolume
     - mountPath: /temp-volume
       name: tempvolume
+    resources:
+      requests:
+        cpu: "250m"
+        memory: "500Mi"
+      limits:
+        cpu: "500m"
+        memory: "1Gi"
+    livenessProbe:
+      httpGet:
+        path: /live
+        port: 80
+    readinessProbe:
+      httpGet:
+        path: /ready
+        port: 80
   volumes:
   - name: myvolume
     hostPath:
-      path: "/Users/yunhongmin/volumes/k8s"
+      path: "/Users/yunhongmin/volumes/k8s/mynginx/html"
   - name: tempvolume
     emptyDir: {}
     
