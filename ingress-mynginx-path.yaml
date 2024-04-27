@@ -5,6 +5,10 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  tls:
+    - hosts:
+        - 192.168.0.16.sslip.io
+      secretName: mynginx-ingress-tls
   ingressClassName: nginx
   rules:
     - host: 192.168.0.16.sslip.io

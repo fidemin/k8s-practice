@@ -1,1 +1,5 @@
 .vagrant
+
+# tls certs and keys
+*.crt
+*.key
