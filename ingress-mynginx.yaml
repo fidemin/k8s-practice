@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mynginx-ingress 
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+    - host: nginx.192.168.0.16.sslip.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix 
+            backend:
+              service:
+                name: mynginx 
+                port:
+                  number: 80
+    - host: apache.192.168.0.16.sslip.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix 
+            backend:
+              service:
+                name: myapache
+                port:
+                  number: 80
