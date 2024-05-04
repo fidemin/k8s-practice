@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: heavy-load
+spec:
+  containers:
+  - name: heavy-load
+    image: busybox
+    command: ["/bin/sh"]
+    args: ["-c", "while true; do busybox wget -q -O- http://heavy-cal-inner; done"]
